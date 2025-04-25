@@ -1,7 +1,7 @@
 package main_classes;
 
 import java.sql.Time;
-import java.util.Date;
+import java.sql.Date;
 
 public class Meeting {
     private Date date;
@@ -56,5 +56,14 @@ public class Meeting {
 
     public void setNote(String note) {
         this.note = note;
+    }
+
+    @Override
+    public String toString() {
+        return "Date: " + date +
+                "\nStart time: " + startTime +
+                "\nEnd time: " + endTime +
+                "\nName: " + name +
+                "\nNote: " + note + "\n";
     }
 }

@@ -24,7 +24,7 @@ public class CalendarList {
 
     public static void showAllCalendars() {
         for (Map.Entry<String, Calendar> entry : calendars.entrySet())
-            System.out.println(entry.getKey());
+            System.out.println("- " + entry.getKey());
         System.out.println();
     }
 }
