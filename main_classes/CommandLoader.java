@@ -1,6 +1,9 @@
 package main_classes;
 
+
+import commands.Agenda;
 import commands.Book;
+import commands.Change;
 import commands.Unbook;
 import interfaces.Command;
 
@@ -12,8 +15,8 @@ public class CommandLoader {
         Map<String, Command> commands = new HashMap<>();
         commands.put("book", new Book());
         commands.put("unbook", new Unbook());
-        //agenda
-        //change
+        commands.put("agenda", new Agenda());
+        commands.put("change", new Change());
         //find
         //holiday
         //busyDays
