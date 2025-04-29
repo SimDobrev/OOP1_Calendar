@@ -1,25 +1,22 @@
 package main_classes;
 
-
-import commands.Agenda;
-import commands.Book;
-import commands.Change;
-import commands.Unbook;
+import commands.*;
 import interfaces.Command;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class CommandLoader {
+public class Commands {
+    private static Map<String, Command> commands = new HashMap<>();
+
     public static Map<String, Command> loadCommands() {
-        Map<String, Command> commands = new HashMap<>();
         commands.put("book", new Book());
         commands.put("unbook", new Unbook());
         commands.put("agenda", new Agenda());
         commands.put("change", new Change());
-        //find
-        //holiday
-        //busyDays
+        commands.put("find", new Find());
+        commands.put("holiday", new Holiday());
+        commands.put("busy_days", new BusyDays());
         //findsLot
         //findsLotWith
         //merge
@@ -30,6 +27,10 @@ public class CommandLoader {
         //close
         //help
         //exit
+        return commands;
+    }
+
+    public static Map<String, Command> get() {
         return commands;
     }
 }
