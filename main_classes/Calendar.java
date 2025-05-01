@@ -1,29 +1,24 @@
 package main_classes;
 
 import java.sql.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class Calendar {
-    private String calendarName;
+    private static Calendar calendar = null;
+    private String name;
     private Set<Meeting> meetings = new HashSet<>();
     private Set<Date> holidays = new HashSet<>();
 
-    public Calendar(String calendarName) {
-        this.calendarName = calendarName;
+    public static Calendar get() {
+        return calendar;
     }
 
-    public String getCalendarName() {
-        return calendarName;
+    public static void set(Calendar instance) {
+        calendar.name = instance == null ? null : instance.getName();
+        calendar = instance;
     }
 
-    public Set<Meeting> getMeetings() {
-        return meetings;
-    }
-
-    public Set<Date> getHolidays() {
-        return holidays;
-    }
+    private Calendar() {}
 
     public void addMeeting(Meeting meeting) {
         meetings.add(meeting);
@@ -39,5 +34,20 @@ public class Calendar {
 
     public void removeHoliday(Date date) {
         holidays.remove(date);
+    }
+    public boolean isHoliday(Date date) {
+        return holidays.contains(date);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Set<Meeting> getMeetings() {
+        return meetings;
+    }
+
+    public Set<Date> getHolidays() {
+        return holidays;
     }
 }

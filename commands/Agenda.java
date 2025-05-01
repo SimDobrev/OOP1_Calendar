@@ -2,7 +2,6 @@ package commands;
 
 import parsers.DateParser;
 import main_classes.Calendar;
-import main_classes.CalendarList;
 import main_classes.Meeting;
 import interfaces.Command;
 
@@ -13,36 +12,31 @@ import java.util.List;
 public class Agenda implements Command {
     @Override
     public void execute(String... args) {
-        if (args.length != 7) {
-            System.out.println("Input: \"book <calendar_name> <date>\"\n");
+        if (args.length != 2) {
+            System.out.println(args.length > 2 ?
+                    "Error: Unnecessary arguments." :
+                    "Error: Missing argument.");
+            System.out.println("Example input: \"agenda <date>\"\n");
             return;
         }
 
-        Calendar calendar = CalendarList.findCalendar(args[1]);
-        if (calendar == null) return;
-
-        Date date = new DateParser().parse(args[2]);
+        Date date = new DateParser().parse(args[1]);
         if (date == null) return;
-
-        if (isHoliday(calendar, date)) {
-            System.out.println("This day is set as a holiday!");
+        if (Calendar.get().isHoliday(date)) {
+            System.out.println("Error: Given day is set as a holiday.\n");
             return;
         }
 
-        List<Meeting> agenda = getAgenda(calendar, date);
+        List<Meeting> agenda = getAgenda(date);
         if (!agenda.isEmpty())
             for (Meeting meeting : agenda)
                 System.out.println(meeting);
-        else System.out.println("No meetings set on this day!");
+        else System.out.println("Error: No meetings set on this day.\n");
     }
 
-    private boolean isHoliday(Calendar calendar, Date date) {
-        return calendar.getHolidays().contains(date);
-    }
-
-    private List<Meeting> getAgenda(Calendar calendar, Date date) {
+    private List<Meeting> getAgenda(Date date) {
         List<Meeting> found = new ArrayList<>();
-        for (Meeting meeting : calendar.getMeetings())
+        for (Meeting meeting : Calendar.get().getMeetings())
             if (date.equals(meeting.getDate()))
                 found.add(meeting);
         return found;
