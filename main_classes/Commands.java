@@ -1,5 +1,6 @@
 package main_classes;
 
+import basic_commands.*;
 import commands.*;
 import interfaces.Command;
 
@@ -17,16 +18,17 @@ public class Commands {
         commands.put("find", new Find());
         commands.put("holiday", new Holiday());
         commands.put("busy_days", new BusyDays());
-        //findsLot
-        //findsLotWith
-        //merge
+        commands.put("busydays", new BusyDays());
+        //findSlot
+        //findSlotWith
+        commands.put("merge", new Merge());
 
         //open
         //save
         //saveAs
         //close
         //help
-        //exit
+        //showAll
         return commands;
     }
 

@@ -8,6 +8,8 @@ import parsers.DateParser;
 
 import java.sql.Time;
 import java.sql.Date;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 
 public class Book implements Command {
     @Override
@@ -26,6 +28,13 @@ public class Book implements Command {
         Time startTime = new TimeParser().parse(args[2]);
         Time endTime = new TimeParser().parse(args[3]);
         if (date == null || startTime == null || endTime == null) return;
+
+        DayOfWeek dayOfWeek = LocalDate.parse(date.toString()).getDayOfWeek();
+        if (dayOfWeek == DayOfWeek.SATURDAY || dayOfWeek == DayOfWeek.SUNDAY) {
+            System.out.println("Error: Cannot book meetings for the weekend.\n");
+            return;
+        }
+
         if (calendar.isHoliday(date)) {
             System.out.println("Error: Given day is set as a holiday.\n");
             return;
