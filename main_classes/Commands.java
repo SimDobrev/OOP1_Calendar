@@ -23,12 +23,14 @@ public class Commands {
         //findSlotWith
         commands.put("merge", new Merge());
 
-        //open
-        //save
-        //saveAs
-        //close
-        //help
-        //showAll
+        commands.put("open", new Open());
+        commands.put("save", new Save());
+        commands.put("saveas", new SaveAs());
+        commands.put("close", new Close());
+        commands.put("help", new Help());
+        commands.put("showcalendars", new ShowCalendars());
+        //create
+        //delete
         return commands;
     }
 
