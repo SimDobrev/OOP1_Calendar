@@ -22,16 +22,11 @@ public class Holiday implements Command {
         Date date = new DateParser().parse(args[1]);
         if (date == null) return;
 
-        if (calendar.getHolidays().isEmpty()) {
-            System.out.println("Error: No holidays set.\n");
-            return;
-        }
-
         if (!calendar.getHolidays().contains(date)) {
             calendar.addHoliday(date);
             Calendar.set(calendar);
             System.out.println("New holiday successfully set.\n");
         }
-        else System.out.println("Error: Date is already set as a holiday.\n");
+        else System.out.println("Error: Given date is already set as a holiday.\n");
     }
 }

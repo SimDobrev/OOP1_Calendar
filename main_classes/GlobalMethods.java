@@ -8,9 +8,11 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.Date;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.sql.Time;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.*;
 
 public class GlobalMethods {
     public static void createCalendar(String calendarName) {
@@ -143,5 +145,70 @@ public class GlobalMethods {
             calendar.addHoliday(new DateParser().parse(scanner.nextLine()));
 
         return calendar;
+    }
+
+    public static Map<Date, Map<Time, Time>> getBusyDays(Calendar calendar) {
+        Map<Date, Map<Time, Time>> busyDays = new HashMap<>();
+        for (Meeting meeting : calendar.getMeetings()) {
+            if (busyDays.containsKey(meeting.getDate()))
+                busyDays.get(meeting.getDate()).put(meeting.getStartTime(), meeting.getEndTime());
+            else {
+                busyDays.put(meeting.getDate(), new HashMap<>());
+                busyDays.get(meeting.getDate()).put(meeting.getStartTime(), meeting.getEndTime());
+            }
+        }
+
+        for (Map.Entry<Date, Map<Time, Time>> entry : busyDays.entrySet()) {
+            List<Map.Entry<Time, Time>> entryList = new ArrayList<>(entry.getValue().entrySet());
+            entryList.sort(Map.Entry.comparingByKey());
+
+            entry.getValue().clear();
+            for (Map.Entry<Time, Time> listEntry : entryList)
+                entry.getValue().put(listEntry.getKey(), listEntry.getValue());
+        }
+        return busyDays;
+    }
+
+    public static void findAvailableTime(Date date, int hours, Map<Date, Map<Time, Time>> busyDays) {
+        LocalTime availableStartTime = null;
+        LocalTime possibleStartTime = LocalTime.parse("08:00:00");
+        LocalTime endOfDay = LocalTime.parse("17:00:00");
+
+        while (availableStartTime == null) {
+            DayOfWeek dayOfWeek = LocalDate.parse(date.toString()).getDayOfWeek();
+            if (dayOfWeek == DayOfWeek.SATURDAY || dayOfWeek == DayOfWeek.SUNDAY) {
+                date = Date.valueOf(date.toLocalDate().plusDays(1).toString());
+                continue;
+            }
+
+            if (!busyDays.containsKey(date)) {
+                System.out.println("Date " + date + " has no set meetings.\n");
+                return; //Exit point 1
+            }
+
+            for (Map.Entry<Time, Time> meetingTimes : busyDays.get(date).entrySet()) {
+                LocalTime startTime = meetingTimes.getKey().toLocalTime();
+                LocalTime endTime = meetingTimes.getValue().toLocalTime();
+
+                int hoursToSubtract = possibleStartTime.getHour() + (startTime.getMinute() >= possibleStartTime.getMinute() ? 0 : 1);
+                if (startTime.minusHours(hoursToSubtract).getHour() >= hours) {
+                    availableStartTime = possibleStartTime;
+                    break; //Exit point 2
+                }
+
+                hoursToSubtract = endTime.getHour() + (endTime.getMinute() > 0 ? 1 : 0);
+                if (endOfDay.minusHours(hoursToSubtract).getHour() >= hours) {
+                    possibleStartTime = endTime;
+                    continue;
+                }
+
+                date = Date.valueOf(date.toLocalDate().plusDays(1).toString());
+                possibleStartTime = LocalTime.parse("08:00:00");
+                break;
+            }
+        }
+
+        System.out.println("A meeting lasting " + hours + (hours == 1 ? " hour" : " hours") +
+                " can be set on " + date + " at " + availableStartTime + ".\n");
     }
 }

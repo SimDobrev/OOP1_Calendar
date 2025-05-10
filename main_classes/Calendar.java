@@ -1,7 +1,8 @@
 package main_classes;
 
 import java.sql.Date;
-import java.util.*;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Calendar {
     private static Calendar calendar = null;
@@ -35,6 +36,7 @@ public class Calendar {
     public void removeHoliday(Date date) {
         holidays.remove(date);
     }
+
     public boolean isHoliday(Date date) {
         return holidays.contains(date);
     }
