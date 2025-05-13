@@ -58,6 +58,12 @@ public class Meeting {
         this.note = note;
     }
 
+    public String getDescription() {
+        return "Meeting with " + name + " on " + date + ".\n" +
+                "Starts at " + startTime + ", ends at " + endTime + ".\n" +
+                "Note: " + note + '\n';
+    }
+
     @Override
     public String toString() {
         return "Date: " + date +
