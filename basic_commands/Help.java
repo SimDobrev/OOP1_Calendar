@@ -5,16 +5,26 @@ import interfaces.Command;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The {@code Help} class is a command, which prints a menu with all currently
+ * available commands.
+ */
 public class Help implements Command {
+    /**
+     * Gets and prints a menu with the currently available commands.
+     */
     @Override
     public void execute(String... args) {
-        if (args.length > 1) {
-            System.out.println("Error: Requires no arguments.\n");
+        if (args.length > 0) {
+            System.out.println("Error: Requires no arguments.");
             return;
         }
         showMenu();
     }
 
+    /**
+     * Gets and prints the commands menu.
+     */
     private void showMenu() {
         System.out.println("\nAvailable commands:");
         List<String> menu = getMenu();
@@ -23,9 +33,14 @@ public class Help implements Command {
             if (command.startsWith("exit"))
                 System.out.println();
         }
-        System.out.println();
+        System.out.println("\nNote: Write values consisting of multiple words with underlines as spaces. (\"Example_input\")");
     }
 
+    /**
+     * Creates and returns a {@code List<String>} of all currently available
+     * commands in the form of a menu.
+     * @return A {@code List<String>} of all currently available commands.
+     */
     private List<String> getMenu() {
         List<String> commands = new ArrayList<>();
         commands.add("open              Opens a chosen calendar");
@@ -43,10 +58,11 @@ public class Help implements Command {
         commands.add("change            Updates a given value within a meeting");
         commands.add("find              Shows a list of meetings that match a given name or note");
         commands.add("holiday           Sets a given date as a holiday");
+        commands.add("unsetHoliday      Unsets a selected holiday");
         commands.add("busyDays          Shows a list of all days with meetings in order of most to least meetings");
         commands.add("findsLot          Finds an appropriate date and time for a meeting");
         commands.add("findsLotWith      Finds an appropriate date and time for a meeting (Supports multiple calendars)");
-        commands.add("merge             Merges the given calendars into the current one");
+        commands.add("merge             Merges the given calendars into the currently open one");
         return commands;
     }
 }
