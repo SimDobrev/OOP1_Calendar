@@ -7,10 +7,23 @@ import interfaces.Command;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * The {@code Commands} class contains a {@code Map} with all currently available
+ * commands.
+ */
 public class Commands {
+    /**
+     * A {@code Map<String, Command>} which contains all currently available commands.
+     * <p> Every command is accessed via unique keyword. </p>
+     */
     private static Map<String, Command> commands = new HashMap<>();
 
-    public static Map<String, Command> loadCommands() {
+    /**
+     * Loads all currently available commands into the static
+     * {@code Map<String, Command>} attribute and returns it.
+     * @return The static {@code Map<String, Command>} with all available commands.
+     */
+    public static Map<String, Command> load() {
         commands.put("open", new Open());
         commands.put("save", new Save());
         commands.put("saveas", new SaveAs());

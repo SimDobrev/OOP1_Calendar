@@ -26,19 +26,20 @@ public class Open implements Command {
             System.out.println(args.length > 1 ?
                     "Error: Unnecessary arguments." :
                     "Error: Missing argument.");
-            System.out.println("Example input: \"open <calendar_name>\"\n");
+            System.out.println("Example input: \"open <calendar_name>\"");
             return;
         }
 
         if (Program.getMainCalendar() != null) {
-            System.out.println("Error: A calendar is already opened.\n");
+            System.out.println("Error: A calendar is already opened.");
             return;
         }
+
+        new File("calendars").mkdir();
 
         File file = new File("calendars\\" + args[0]);
         if (!file.exists())
             new Create().execute(args[0]);
-        else System.out.println("Calendar successfully opened.\n");
-        Program.loadMainCalendar(args[0]);
+        else Program.loadMainCalendar(args[0]);
     }
 }
