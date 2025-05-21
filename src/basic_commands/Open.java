@@ -40,6 +40,6 @@ public class Open implements Command {
         File file = new File("calendars\\" + args[0]);
         if (!file.exists())
             new Create().execute(args[0]);
-        else Program.loadMainCalendar(args[0]);
+        Program.loadMainCalendar(args[0]);
     }
 }

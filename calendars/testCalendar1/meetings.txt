@@ -1,0 +1,84 @@
+Date: 2025-06-16
+Start time: 08:00:00
+End time: 10:00:00
+Name: Krasimira Naidenova
+Note: Give a tour of the new place
+
+Date: 2025-06-16
+Start time: 12:00:00
+End time: 14:00:00
+Name: Petar Marinov
+Note: 
+
+Date: 2025-06-17
+Start time: 10:00:00
+End time: 10:30:00
+Name: Hristo Bogdanov
+Note: Don't forget to bring a gift
+
+Date: 2025-06-17
+Start time: 12:00:00
+End time: 13:00:00
+Name: Anton Filipov
+Note: Lunch break
+
+Date: 2025-06-18
+Start time: 11:00:00
+End time: 12:00:00
+Name: Krasimira Naidenova
+Note: Settle the deal
+
+Date: 2025-06-20
+Start time: 12:00:00
+End time: 14:00:00
+Name: Ivan Ivanov
+Note: Don't forget to give back money
+
+Date: 2025-06-20
+Start time: 15:00:00
+End time: 16:00:00
+Name: Petar Marinov
+Note: Check the new apartments
+
+Date: 2025-06-23
+Start time: 12:00:00
+End time: 14:00:00
+Name: Petar Marinov
+Note: Report current problems
+
+Date: 2025-06-23
+Start time: 16:00:00
+End time: 17:00:00
+Name: Rumen Georgiev
+Note: 
+
+Date: 2025-06-25
+Start time: 16:00:00
+End time: 17:00:00
+Name: Rumen Georgiev
+Note: 
+
+Date: 2025-06-26
+Start time: 19:00:00
+End time: 21:00:00
+Name: Yoana Velikova
+Note: See an old friend
+
+Date: 2025-06-27
+Start time: 12:00:00
+End time: 14:00:00
+Name: Hristiyan Milenov
+Note: Give a tour of the desired place
+
+Date: 2025-06-30
+Start time: 19:00:00
+End time: 22:00:00
+Name: Silviya Hristova
+Note: Bring flowers and birthday gift
+
+Date: 2025-07-01
+Start time: 12:00:00
+End time: 14:00:00
+Name: Rumen Georgiev
+Note: 
+

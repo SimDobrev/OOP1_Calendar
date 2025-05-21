@@ -1,0 +1,66 @@
+Date: 2025-06-25
+Start time: 09:00:00
+End time: 10:00:00
+Name: Ivan Ivanov
+Note: 
+
+Date: 2025-06-25
+Start time: 12:00:00
+End time: 13:00:00
+Name: Anton Filipov
+Note: Lunch break
+
+Date: 2025-06-25
+Start time: 13:30:00
+End time: 14:00:00
+Name: Petar Marinov
+Note: Don't forget the documents
+
+Date: 2025-06-25
+Start time: 20:00:00
+End time: 22:00:00
+Name: Silviya Hristova
+Note: 
+
+Date: 2025-06-26
+Start time: 10:00:00
+End time: 15:00:00
+Name: Rumen Georgiev
+Note: Group meeting
+
+Date: 2025-06-27
+Start time: 09:00:00
+End time: 11:00:00
+Name: Boris Stanchev
+Note: 
+
+Date: 2025-06-27
+Start time: 12:00:00
+End time: 13:00:00
+Name: Petar Marinov
+Note: 
+
+Date: 2025-06-27
+Start time: 14:00:00
+End time: 14:30:00
+Name: Rumen Georgiev
+Note: 
+
+Date: 2025-06-30
+Start time: 10:00:00
+End time: 12:00:00
+Name: Petar Marinov
+Note: Settle the deal
+
+Date: 2025-06-30
+Start time: 12:00:00
+End time: 13:00:00
+Name: Anton Filipov
+Note: Lunch break
+
+Date: 2025-06-30
+Start time: 19:00:00
+End time: 22:00:00
+Name: Silviya Hristova
+Note: Bring flowers and birthday gift
+
