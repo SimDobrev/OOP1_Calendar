@@ -41,12 +41,12 @@ public class Merge implements Command {
         String mainCalendarName = Program.getMainCalendar().getName();
         boolean successfullyMerged = merge(calendars);
         if (successfullyMerged) {
-            new Close().execute();
+            Program.setMainCalendar(null);
             new Delete().execute(mainCalendarName);
             for (Calendar calendar : calendars)
                 new Delete().execute(calendar.getName());
             new Create().execute(mainCalendarName);
-            new Open().execute(mainCalendarName);
+            Program.setMainCalendar(CalendarLoader.loadCalendar(mainCalendarName));
         }
         else {
             System.out.println("Error: Calendars could not be merged.");

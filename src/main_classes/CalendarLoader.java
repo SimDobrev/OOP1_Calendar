@@ -22,12 +22,13 @@ public class CalendarLoader {
     public static Calendar loadCalendar(String calendarName) {
         Calendar calendar = new Calendar(calendarName);
 
-        if (!new File("calendars").exists()) {
+        if (!new File("..\\calendars").exists()) {
             System.out.println("Error: No calendars found.");
             return null;
         }
 
-        if (!new File("calendars\\" + calendarName).exists()) {
+
+        if (!new File("..\\calendars\\" + calendarName).exists()) {
             System.out.println("Error: Calendar \"" + calendarName + "\" not found.");
             return null;
         }
@@ -47,9 +48,11 @@ public class CalendarLoader {
     private static Calendar loadMeetings(Calendar calendar) {
         Scanner scanner;
         try {
-            scanner = new Scanner(new File("calendars\\" + calendar.getName() + "\\meetings.txt"));
+            scanner = new Scanner(new File("..\\calendars\\" + calendar.getName() + "\\meetings.txt"));
         } catch (FileNotFoundException e) {
-            System.out.println("File not found.");
+            System.out.println("Meetings file not found.");
+            for (StackTraceElement ste : e.getStackTrace())
+                System.out.println(ste.toString());
             return null;
         }
 
@@ -89,9 +92,9 @@ public class CalendarLoader {
     private static Calendar loadHolidays(Calendar calendar) {
         Scanner scanner;
         try {
-            scanner = new Scanner(new File("calendars\\" + calendar.getName() + "\\holidays.txt"));
+            scanner = new Scanner(new File("..\\calendars\\" + calendar.getName() + "\\holidays.txt"));
         } catch (FileNotFoundException e) {
-            System.out.println("File not found.\n");
+            System.out.println("Holidays file not found.\n");
             return null;
         }
 

@@ -27,9 +27,9 @@ public class Save extends SaveCommand {
             return;
         }
 
-        new File("calendars").mkdir();
+        new File("..\\calendars").mkdir();
 
-        if (!new File("calendars\\" + Program.getMainCalendar().getName()).exists())
+        if (!new File("..\\calendars\\" + Program.getMainCalendar().getName()).exists())
             new Create().execute(Program.getMainCalendar().getName());
 
         if (saveCalendar(Program.getMainCalendar().getName()))

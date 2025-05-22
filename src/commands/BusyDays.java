@@ -63,7 +63,7 @@ public class BusyDays implements Command {
         entryList.sort(Map.Entry.comparingByValue());
 
         for (Map.Entry<LocalDate, LocalTime> entry : entryList)
-            System.out.print("\n- Busy time on " + entry.getKey() + " - " + entry.getValue() + " hours");
+            System.out.print("\n- Total busy hours on " + entry.getKey() + " - " + entry.getValue() + " hours");
         System.out.println();
     }
 

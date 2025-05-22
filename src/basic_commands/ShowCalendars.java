@@ -24,13 +24,13 @@ public class ShowCalendars implements Command {
             return;
         }
 
-        if (!new File("calendars").exists()) {
+        if (!new File("..\\calendars").exists()) {
             System.out.println("No calendars found.");
             return;
         }
 
-        File[] directories = new File("calendars").listFiles(File::isDirectory);
-        if (directories == null) {
+        File[] directories = new File("..\\calendars").listFiles(File::isDirectory);
+        if (directories == null || directories.length == 0) {
             System.out.println("No calendars found.");
             return;
         }

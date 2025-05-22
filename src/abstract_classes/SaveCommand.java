@@ -26,7 +26,7 @@ public abstract class SaveCommand implements Command {
      * operation has failed.
      */
     protected boolean saveCalendar(String calendarName) {
-        try (FileWriter fileWriter = new FileWriter("calendars\\" + calendarName + "\\meetings.txt")) {
+        try (FileWriter fileWriter = new FileWriter("..\\calendars\\" + calendarName + "\\meetings.txt")) {
             for (Meeting meeting : Program.getMainCalendar().getMeetings()) {
                 fileWriter
                         .append("Date: ").append(meeting.getDate().toString()).append('\n')
@@ -40,7 +40,7 @@ public abstract class SaveCommand implements Command {
             return false;
         }
 
-        try (FileWriter fileWriter = new FileWriter("calendars\\" + calendarName + "\\holidays.txt")) {
+        try (FileWriter fileWriter = new FileWriter("..\\calendars\\" + calendarName + "\\holidays.txt")) {
             for (LocalDate holiday : Program.getMainCalendar().getHolidays())
                 fileWriter.append("Date: ").append(holiday.toString()).append('\n');
         } catch (IOException e) {

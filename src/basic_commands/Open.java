@@ -35,9 +35,9 @@ public class Open implements Command {
             return;
         }
 
-        new File("calendars").mkdir();
+        new File("..\\calendars").mkdir();
 
-        File file = new File("calendars\\" + args[0]);
+        File file = new File("..\\calendars\\" + args[0]);
         if (!file.exists())
             new Create().execute(args[0]);
         Program.loadMainCalendar(args[0]);

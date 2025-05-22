@@ -9,6 +9,6 @@ public class Application {
      * @param args The user input.
      */
     public static void main(String[] args) {
-        Program.start(args);
+        Program.start();
     }
 }

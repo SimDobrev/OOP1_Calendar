@@ -5,6 +5,7 @@ import interfaces.Command;
 import java.io.File;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.Scanner;
 import java.util.Set;
 
 /**
@@ -29,21 +30,27 @@ public class Program {
     /**
      * Gets the user input and executes the chosen command, only if the first word is an
      * available command, otherwise prints an appropriate message.
-     * @param args The user input.
      */
-    public static void start(String[] args) {
-        new File("calendars").mkdir();
+    public static void start() {
+        new File("..\\calendars").mkdir();
 
-        while (!args[0].equals("exit")) {
-            if (mainCalendar == null && !allowedStartingCommands.contains(args[0])) {
-                System.out.println("Error: No calendar open.\n");
+        while (true) {
+            System.out.print("Input> ");
+            String[] userInput = new Scanner(System.in).nextLine().split(" ");
+
+            if (userInput[0].equalsIgnoreCase("exit")) break;
+            if (mainCalendar == null && !allowedStartingCommands.contains(userInput[0].toLowerCase())) {
+                System.out.println("Error: " +
+                        (commands.containsKey(userInput[0].toLowerCase())
+                        ? "No calendar open.\n"
+                        : "\"" + userInput[0] + "\" is not an available command.\n"));
                 continue;
             }
 
             try {
-                commands.get(args[0].toLowerCase()).execute(getArguments(args));
+                commands.get(userInput[0].toLowerCase()).execute(getArguments(userInput));
             } catch (RuntimeException e) {
-                System.out.println("Error: \"" + args[0] + "\" is not an available command.");
+                System.out.println("Error: \"" + userInput[0] + "\" is not an available command.\n");
             }
             System.out.println();
         }

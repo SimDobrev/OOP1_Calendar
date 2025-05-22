@@ -35,19 +35,19 @@ public class Delete implements Command {
      */
     private void deleteCalendar(String calendarName) {
         try {
-            if (!new File("calendars").exists()) {
+            if (!new File("..\\calendars").exists()) {
                 System.out.println("Error: No calendars found.");
                 return;
             }
 
-            if (!new File("calendars\\" + calendarName).exists()) {
+            if (!new File("..\\calendars\\" + calendarName).exists()) {
                 System.out.println("Error: Calendar \"" + calendarName + "\"not found.");
                 return;
             }
 
-            new File("calendars\\" + calendarName + "\\meetings.txt").delete();
-            new File("calendars\\" + calendarName + "\\holidays.txt").delete();
-            new File("calendars\\" + calendarName).delete();
+            new File("..\\calendars\\" + calendarName + "\\meetings.txt").delete();
+            new File("..\\calendars\\" + calendarName + "\\holidays.txt").delete();
+            new File("..\\calendars\\" + calendarName).delete();
         } catch (RuntimeException e) {
             System.out.println("Error: Calendar could not be deleted.");
             return;

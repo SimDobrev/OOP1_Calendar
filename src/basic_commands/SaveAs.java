@@ -33,9 +33,9 @@ public class SaveAs extends SaveCommand {
             return;
         }
 
-        new File("calendars").mkdir();
+        new File("..\\calendars").mkdir();
 
-        if (new File("calendars\\" + args[0]).exists()) {
+        if (new File("..\\calendars\\" + args[0]).exists()) {
             System.out.println("Calendar \"" + args[0] + "\" already exists.");
             System.out.println("Do you wish to overwrite it?");
 
