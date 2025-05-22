@@ -37,7 +37,7 @@ public class FindSlotWith extends SlotFinder {
         try {
             hours = Integer.parseInt(args[1]);
             if (hours < 1 || hours > 9) {
-                System.out.println("Error: Minimum 1 hour, maximum 9 hours.");
+                System.out.println("Error: A meeting can be minimum 1 hour and maximum 9 hours long.");
                 return;
             }
         } catch (NumberFormatException e) {

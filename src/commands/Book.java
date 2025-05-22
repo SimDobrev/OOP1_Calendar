@@ -52,12 +52,12 @@ public class Book implements Command {
             return;
         }
 
-        Meeting meeting = new Meeting(date, startTime, endTime,
+        Meeting newMeeting = new Meeting(date, startTime, endTime,
                 args[3].replace('_', ' '),
                 args.length == 5 ? args[4].replace('_', ' ') : "");
 
-        if (!calendar.getMeetings().contains(meeting)) {
-            calendar.addMeeting(meeting);
+        if (!calendar.containsMeeting(newMeeting)) {
+            calendar.addMeeting(newMeeting);
             calendar.sortMeetings();
             Program.setMainCalendar(calendar);
             System.out.println("New meeting successfully booked.");

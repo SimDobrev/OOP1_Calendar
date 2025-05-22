@@ -33,7 +33,7 @@ public class Help implements Command {
             if (command.startsWith("exit"))
                 System.out.println();
         }
-        System.out.println("\nNote: Write values consisting of multiple words with underlines as spaces. (\"Example_input\")");
+        System.out.println("\nNote: Write values consisting of multiple words with underlines instead of spaces. (\"Example_input\")");
     }
 
     /**

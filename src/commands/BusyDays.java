@@ -54,7 +54,7 @@ public class BusyDays implements Command {
                 meeting.getDate().isAfter(date_to));
 
         Map<LocalDate, LocalTime> hoursPerDay = getHoursPerDay(meetingsInRange);
-        if (hoursPerDay.isEmpty()) {
+        if (hoursPerDay == null || hoursPerDay.isEmpty()) {
             System.out.println("No busy days found.");
             return;
         }
@@ -75,6 +75,8 @@ public class BusyDays implements Command {
      */
     private Map<LocalDate, LocalTime> getHoursPerDay(List<Meeting> meetings) {
         Map<LocalDate, LocalTime> meetingsPerDay = new HashMap<>();
+
+        if (meetings.isEmpty()) return null;
 
         LocalTime totalTime = LocalTime.parse("00:00:00");
         LocalDate previousDate = meetings.get(0).getDate();

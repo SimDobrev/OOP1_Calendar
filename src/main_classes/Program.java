@@ -42,15 +42,15 @@ public class Program {
             if (mainCalendar == null && !allowedStartingCommands.contains(userInput[0].toLowerCase())) {
                 System.out.println("Error: " +
                         (commands.containsKey(userInput[0].toLowerCase())
-                        ? "No calendar open.\n"
-                        : "\"" + userInput[0] + "\" is not an available command.\n"));
+                        ? "No calendar open."
+                        : "\"" + userInput[0] + "\" is not an available command."));
                 continue;
             }
 
             try {
                 commands.get(userInput[0].toLowerCase()).execute(getArguments(userInput));
             } catch (RuntimeException e) {
-                System.out.println("Error: \"" + userInput[0] + "\" is not an available command.\n");
+                System.out.println("Error: \"" + userInput[0] + "\" is not an available command.");
             }
             System.out.println();
         }

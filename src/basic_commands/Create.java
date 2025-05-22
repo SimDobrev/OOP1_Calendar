@@ -41,7 +41,7 @@ public class Create implements Command {
      */
     private void createCalendar(String calendarName) {
         try {
-            if (new File("..\\calendars" + calendarName).exists()) {
+            if (new File("..\\calendars\\" + calendarName).exists()) {
                 System.out.println("Error: Calendar \"" + calendarName + "\" already exists.");
                 return;
             }

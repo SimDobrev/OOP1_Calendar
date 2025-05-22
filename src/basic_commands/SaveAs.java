@@ -42,14 +42,14 @@ public class SaveAs extends SaveCommand {
             String userInput = getUserInput();
             if (userInput.equals("yes") || userInput.equals("y"))
                 System.out.println(saveCalendar(args[0])
-                        ? "Calendar successfully saved as \"" + args[0] + "\""
+                        ? "Calendar successfully saved as \"" + args[0] + "\"."
                         : "Error: Calendar could not be saved properly.");
             else System.out.println("Operation cancelled.");
         }
         else {
             new Create().execute(args[0]);
             System.out.println(saveCalendar(args[0])
-                    ? "Calendar successfully saved as \"" + args[0] + "\""
+                    ? "Calendar successfully saved as \"" + args[0] + "\"."
                     : "Error: Calendar could not be saved properly.");
         }
     }

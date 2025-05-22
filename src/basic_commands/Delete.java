@@ -41,7 +41,7 @@ public class Delete implements Command {
             }
 
             if (!new File("..\\calendars\\" + calendarName).exists()) {
-                System.out.println("Error: Calendar \"" + calendarName + "\"not found.");
+                System.out.println("Error: Calendar \"" + calendarName + "\" not found.");
                 return;
             }
 

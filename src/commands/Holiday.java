@@ -37,6 +37,11 @@ public class Holiday implements Command {
         LocalDate date = new LocalDateParser().parse(args[0]);
         if (date == null) return;
 
+        if (calendar.getMeetingsPerDay().get(date) != null) {
+            System.out.println("Error: There are booked meetings on this date, so it cannot be set as a holiday.");
+            return;
+        }
+
         if (!calendar.containsHoliday(date)) {
             calendar.addHoliday(date);
             calendar.sortHolidays();
